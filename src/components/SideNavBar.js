@@ -19,17 +19,17 @@ const routes = [
   {
     path: "/",
     exact: true,
-    sidebar: () => <div>Home</div>,
-    main: () => <h2>Home</h2>
+    sidebar: () => <div className="text-muted">Home</div>,
+    main: () => <h2>GameRoom</h2>
   },
   {
     path: "/pac-man",
-    sidebar: () => <div>Pac-Man</div>,
+    sidebar: () => <div className="text-muted">Pac-Man</div>,
     main: () => <h2>Pac-Man</h2>
   },
   {
     path: "/dice-game",
-    sidebar: () => <div>Dice-Game</div>,
+    sidebar: () => <div className="text-muted">Dice-Game</div>,
     main: () => <h2>Dice-Game</h2>
   }
 ];
@@ -37,58 +37,52 @@ const routes = [
 export default function SideNavBar() {
   return (
     <Router>
-      <div style={{ display: "flex" }}>
-        <div
-          style={{
-            padding: "10px",
-            width: "220px",
-            background: "#f0f0f0"
-          }}
-        >
-          <ul style={{ listStyleType: "none", padding: 0 }}>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/pac-man">Pac-Man</Link>
-            </li>
-            <li>
-              <Link to="/dice-game">Dice Game</Link>
-            </li>
-          </ul>
+      <div className="container">
+        <div className="row">
+          <div className="col-3 bg-light py-3">
+            <nav aria-label="breadcrumb">
+              <ol className="breadcrumb">
+                <Switch>
+                  {routes.map((route, index) => (
+                    <Route
+                      key={index}
+                      path={route.path}
+                      exact={route.exact}
+                      children={<route.sidebar />}
+                    />
+                  ))}
+                </Switch>
+              </ol>
+            </nav>
+            <nav>
+              <ul className="list-group">
+                <li className="list-group-item">
+                  <Link to="/">Home</Link>
+                </li>
+                <li className="list-group-item">
+                  <Link to="/pac-man">Pac-Man</Link>
+                </li>
+                <li className="list-group-item">
+                  <Link to="/dice-game">Dice Game</Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
 
-          <Switch>
-            {routes.map((route, index) => (
-              // You can render a <Route> in as many places
-              // as you want in your app. It will render along
-              // with any other <Route>s that also match the URL.
-              // So, a sidebar or breadcrumbs or anything else
-              // that requires you to render multiple things
-              // in multiple places at the same URL is nothing
-              // more than multiple <Route>s.
-              <Route
-                key={index}
-                path={route.path}
-                exact={route.exact}
-                children={<route.sidebar />}
-              />
-            ))}
-          </Switch>
-        </div>
-
-        <div style={{ flex: 1, padding: "10px" }}>
-          <Switch>
-            {routes.map((route, index) => (
-              // Render more <Route>s with the same paths as
-              // above, but different components this time.
-              <Route
-                key={index}
-                path={route.path}
-                exact={route.exact}
-                children={<route.main />}
-              />
-            ))}
-          </Switch>
+          <div className="col-9">
+            <Switch>
+              {routes.map((route, index) => (
+                // Render more <Route>s with the same paths as
+                // above, but different components this time.
+                <Route
+                  key={index}
+                  path={route.path}
+                  exact={route.exact}
+                  children={<route.main />}
+                />
+              ))}
+              </Switch>
+          </div>
         </div>
       </div>
     </Router>

@@ -1,0 +1,54 @@
+.Die {
+  display: block;
+  font-size: 10rem;
+  padding: 2.5rem;
+  color: #a50000;
+  position: relative;
+  z-index: 10;
+}
+.Die::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10.5%;
+  background: linear-gradient(#e66465, #9198e5);
+  transform: translate(0%, 800%) scale(-0.55);
+  z-index: -10;
+  filter: blur(25px);
+  opacity: .9;
+}
+.Dice-container {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
+.is-rolling {
+  animation-name: wobble;
+  animation-duration: 1s;
+}
+
+@keyframes wobble {
+  from {
+    transform: translate3d(0,0,0);
+  }
+  15% {
+    transform: translate3d(-25%,0,0) rotate3d(0,0,1,-5deg);
+  }
+  30% {
+    transform: translate3d(20%,0,0) rotate3d(0,0,1,3deg);
+  }
+  45% {
+    transform: translate3d(-15%,0,0) rotate3d(0,0,1,-3deg);
+  }
+  60% {
+    transform: translate3d(10%,0,0) rotate3d(0,0,1,2deg);
+  }
+  75% {
+    transform: translate3d(-5%,0,0) rotate3d(0,0,1,-1deg);
+  }
+  to {
+    transform: translate3d(0,0,0);
+  }
+}

@@ -1,0 +1,9 @@
+.DiceGame {
+  padding: 1rem;
+}
+.DiceGame .content {
+  background: url('../images/craps-table.jpg') no-repeat center center;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
