@@ -1,8 +1,8 @@
 import React from "react";
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
+  // Switch,
+  // Route,
   Link
 } from "react-router-dom";
 
@@ -18,6 +18,9 @@ export default function Navigation() {
         </li>
         <li className="list-group-item">
           <Link to="/dicegame">Dice Game</Link>
+        </li>
+        <li className="list-group-item">
+          <Link to="/pokegame">Pokegame</Link>
         </li>
       </ul>
     </nav>

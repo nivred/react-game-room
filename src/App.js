@@ -6,12 +6,13 @@ import {
   Route,
 } from "react-router-dom";
 
-import SideNavBar from './components/SideNavBar';
+// import SideNavBar from './components/SideNavBar';
 import Navigation from './components/Navigation';
 import Home from './pages/Home'
 import DiceGame from './pages/DiceGame'
 import TicTacToe from './pages/TicTacToe'
-import 'bootstrap/dist/css/bootstrap.css';
+import Pokegame from './pages/Pokegame'
+import 'bootstrap/dist/css/bootstrap.css'
 
 function App() {
   return (
@@ -32,6 +33,9 @@ function App() {
                 </Route>
                 <Route path="/dicegame">
                   <DiceGame />
+                </Route>
+                <Route path="/pokegame">
+                  <Pokegame />
                 </Route>
               </Switch>
             </main>
